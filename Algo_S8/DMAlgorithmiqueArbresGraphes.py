@@ -1,8 +1,5 @@
 #DM algorithmique - Arbres et Graphes
 #Master Bio-informatique
-#Louis Montagne
-#Luna Meyer
-#Benjamin Gottis
 
 import random
 
