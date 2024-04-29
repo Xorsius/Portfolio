@@ -10,7 +10,7 @@ Solving a problem consisting in determining the collision of balls in a space us
 
 Design of a tool for automatic data integration into a SQL database, with an ergonomic Python interface for simplified database queries.
 
-<img src="Images/schema_relationnel.PNG" width="400">
+<img src="Images/schema_relationnel.PNG" width="500">
 
 
 ## [Machine Learning](Machine_Learning)
@@ -27,14 +27,14 @@ Convolutional neural networks for breast cancer type classification based on gen
 
 <img src="Images/BreastCancer.png" width="200">
 
-## [Multilayer perceptron Fungal family classification](Machine_Learning/MLP-kfold_overSMOTE.Rmd)
+### [Multilayer perceptron Fungal family classification](Machine_Learning/MLP-kfold_overSMOTE.Rmd)
 
 Multilayer Perceptron for classifying fungi into 4 superfamilies based on gene expression profiles.
 
 ## [Omics](Omics)
 
 Assembles reads from a FASTQ file in optimal sequence using 2 different algorithms, SCS (shortest common superstring) and Greedy. 
-Consists of a library of functions [assembly.py](Omics/assembly.py) and a main[test_assembly.py](Omics/test_assembly.py). 
+Consists of a library of functions [assembly.py](Omics/assembly.py) and a main [test_assembly.py](Omics/test_assembly.py). 
 
 
 <!-- ## [Développement](Developpment)
