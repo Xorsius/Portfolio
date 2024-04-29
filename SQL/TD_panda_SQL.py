@@ -7,7 +7,7 @@ import unidecode
 
 
 def connexion(usr, psw):
-    print("connexion a la base dedonnees...")
+    print("connexion a la base de donnees...")
     USERNAME = usr
     PASSWORD = psw  # à remplacer par le mot de passe d’accès aux bases
     try:

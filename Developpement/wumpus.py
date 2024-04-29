@@ -2,6 +2,8 @@ import time
 import random as r
 from os import system
 import warnings
+warnings.filterwarnings("ignore")
+
 
 arrow = 0
 
@@ -105,7 +107,7 @@ def disboard(C,adj):
                      /  \       /  \\
                     /   {:^3s}---{:^3s}   \\
                    /    /       \    \\
-                  {:>2s}---{:>2s}       {:>2s}---{:>2s}
+                  {:^2s}---{:>2s}       {:>2s}---{:>2s}
                    \    \       /    /
                     \   {:^3s}---{:^3s}   /
                      \  /       \  /
@@ -364,6 +366,7 @@ def displayArrow(board):
 
 
 def menu(board):
+    system('cls')
     system('clear')
     C=getPosition(board,'C')
     adj=choosePossibilities(board,C)
@@ -379,7 +382,7 @@ def menu(board):
 
     dep  =  input("Voulez vous vous déplacer ? (Y/N): ")
     if dep == "Y" or dep =='y':
-        print("Où voulez-vous vous déplacer ?\nroom 1\nroom 2\nroom 3")
+        print("Où voulez-vous vous déplacer ?\nSalle 1\nSalle 2\nSalle 3")
         player_movechoice = 0
         while player_movechoice != 1 and player_movechoice != 2 and player_movechoice != 3:
             player_movechoice = int(input())
@@ -432,3 +435,10 @@ def Win(board):
     initialize(board)
     p = getPosition(board, "C")
     disboard(p, choosePossibilities(board, p))
+
+#GAME----------------------------------------------------------------------------------------------------------
+
+board=[]
+initialize(board)
+while True:
+    menu(board)

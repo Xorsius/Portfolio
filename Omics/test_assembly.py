@@ -1,4 +1,4 @@
-import fonctions as a
+import assembly as a
 
 
 dicoreads=a.readFASTQ('reads.fastq')

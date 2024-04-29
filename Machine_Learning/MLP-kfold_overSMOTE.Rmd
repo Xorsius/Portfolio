@@ -1,0 +1,79 @@
+---
+title: "MLPtest"
+output: ''
+date: "2023-11-08"
+---
+
+Multilayer Perceptron
+
+Loading
+
+```{r}
+setwd("~/Downloads/")
+data <- read.csv("DATA_fungi.csv",sep = ";")
+
+#data$SuperSpecies <- paste(data$superfamily,data$species,sep="-")
+data <- subset(data,select = -species)
+
+name = unique(as.character(data$superfamily))
+print(name)
+
+# Standardization
+colonneAStandardiser <- sapply(data, is.numeric)
+data[, colonneAStandardiser] <- scale(data[, colonneAStandardiser], center = T , scale = T)
+
+```
+
+Training
+
+```{r}
+library(themis)
+library(RSNNS)
+library(caret)
+
+# Define the control parameters for k-fold cross-validation
+ctrl <- trainControl(method = "cv", number = 4, verboseIter = F,sampling = "smote")
+
+# Train the model using train function
+model <- train(superfamily ~ .,
+               data = data,
+               method = "mlp",
+               trControl = ctrl,
+               )
+
+# Print the trained model
+print(model)
+
+```
+
+```{r}
+# Load the trained model from the file
+model <- readRDS("balanced_MLP_oversmote.rds")
+
+```
+
+Prediction
+
+```{r}
+#Cut in test and train sample
+#set.seed(500)
+index <- sample(1 : nrow(data), 
+                round(0.75 * nrow(data)))
+train <- data[index, ]
+test <- data[-index, ]
+
+# Make predictions on the test set
+predictions <- predict(model, newdata = test)
+
+# Create the confusion matrix
+conf_matrix <- confusionMatrix(predictions, as.factor(test$superfamily))
+
+# Print the confusion matrix
+print(conf_matrix)
+```
+
+```{r}
+# Save the trained model to a file
+saveRDS(model, "balanced_MLP_oversmote.rds")
+
+```
